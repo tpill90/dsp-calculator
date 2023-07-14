@@ -18,7 +18,7 @@
         {"name": "Assembling machine Mk.II", "key_name": "assembler2", "category": "crafting", "power": 540, "max": 4, "rate": 1},
         {"name": "Assembling machine Mk.III", "key_name": "assembler3", "category": "crafting", "power": 1080, "max": 4, "rate": 1.5},
         {"name": "Smelter", "key_name": "smelter1", "category": "smelting", "power": 360, "max": 4, "rate": 1},
-        {"name": "Plane smelter", "key_name": "smelter2", "category": "smelting", "power": 1440, "max": 4, "rate": 1},
+        {"name": "Plane smelter", "key_name": "smelter2", "category": "smelting", "power": 1440, "max": 4, "rate": 2},
         {"name": "Matrix lab", "key_name": "matrix_lab", "category": "matrix_lab", "power": 480, "max": 4, "rate": 1},
         {"name": "Chemical plant", "key_name": "chemical_plant", "category": "chemical_plant", "power": 720, "max": 4, "rate": 1},
         {"name": "Oil refinery", "key_name": "oil_refinery", "category": "oil_refinery", "power": 960, "max": 4, "rate": 1},
@@ -155,7 +155,7 @@
         {"name": "Assembling machine Mk.II", "key_name": "assembling_machine_mk_ii", "tier": 3, "stack_size": 50},
         {"name": "Assembling machine Mk.III", "key_name": "assembling_machine_mk_iii", "tier": 3, "stack_size": 50},
         {"name": "Smelter", "key_name": "smelter1", "tier": 3, "stack_size": 50},
-        {"name": "Plane smelter", "key_name": "smelter2", "tier": 4, "stack_size": 50},
+        {"name": "Plane smelter", "key_name": "smelter2", "tier": 3, "stack_size": 50},
         {"name": "Spray coater", "key_name": "spray_coater", "tier": 3, "stack_size": 50},
         {"name": "Chemical plant", "key_name": "chemical_plant", "tier": 3, "stack_size": 30},
         {"name": "Quantum chemical plant", "key_name": "quantum_chemical_plant", "tier": 4, "stack_size": 30},
@@ -519,7 +519,7 @@
         {
             "name": "Plane smelter", "key_name": "smelter2", "category": "crafting",
             "time": 5,
-            "ingredients": [["smelter1", 1], ["frame_material", 5], ["[plane_filter]", 4], ["unipolar_magnet", 15]],
+            "ingredients": [["smelter1", 1], ["frame_material", 5], ["plane_filter", 4], ["unipolar_magnet", 15]],
             "product": ["smelter2", 1]
         },
         {
