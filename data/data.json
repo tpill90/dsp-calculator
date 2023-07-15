@@ -36,6 +36,7 @@
         {"name": "Stone ore", "key_name": "stone_ore", "tier": 0, "stack_size": 100},
         {"name": "Coal ore", "key_name": "coal_ore", "tier": 0, "stack_size": 100},
         {"name": "Silicon ore", "key_name": "silicon_ore", "tier": 0, "stack_size": 100},
+        {"name": "Silicon ore alt", "key_name": "silicon_ore_vein", "tier": 0, "stack_size": 100},
         {"name": "Titanium ore", "key_name": "titanium_ore", "tier": 0, "stack_size": 100},
         {"name": "Water", "key_name": "water", "tier": 0, "stack_size": 20},
         {"name": "Crude oil", "key_name": "crude_oil", "tier": 0, "stack_size": 20},
@@ -386,12 +387,6 @@
             "product": ["silicon_ore", 1]
         },
         {
-            "name": "Silicon ore", "key_name": "silicon_ore_alt", "category": "smelting",
-            "time": 10,
-            "ingredients": [["silicon_ore2", 1]],
-            "product": ["silicon_ore", 1]
-        },
-        {
             "name": "Carbon nanotube", "key_name": "carbon_nanotube", "category": "chemical_plant",
             "time": 4,
             "ingredients": [["spiniform_stalagmite_crystal", 6]],
@@ -557,6 +552,12 @@
             "name": "High-purity silicon", "key_name": "high-purity_silicon", "category": "smelting",
             "time": 2,
             "ingredients": [["silicon_ore", 2]],
+            "product": ["high-purity_silicon", 1]
+        },
+        {
+            "name": "High-purity silicon", "key_name": "high-purity_silicon_alt", "category": "smelting",
+            "time": 2,
+            "ingredients": [["silicon_ore_vein", 2]],
             "product": ["high-purity_silicon", 1]
         },
         {
@@ -932,7 +933,7 @@
         {"key_name": "stone_ore", "category": "mineral"},
         {"key_name": "coal_ore", "category": "mineral"},
         {"key_name": "titanium_ore", "category": "mineral"},
-        {"key_name": "silicon_ore2", "category": "mineral"},
+        {"key_name": "silicon_ore_vein", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
