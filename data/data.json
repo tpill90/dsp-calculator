@@ -926,6 +926,7 @@
         {"key_name": "stone_ore", "category": "mineral"},
         {"key_name": "coal_ore", "category": "mineral"},
         {"key_name": "titanium_ore", "category": "mineral"},
+        {"key_name": "silicon_ore", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
