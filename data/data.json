@@ -386,6 +386,12 @@
             "product": ["silicon_ore", 1]
         },
         {
+            "name": "Silicon ore", "key_name": "silicon_ore_alt", "category": "smelting",
+            "time": 10,
+            "ingredients": [["silicon_ore2", 1]],
+            "product": ["silicon_ore", 1]
+        },
+        {
             "name": "Carbon nanotube", "key_name": "carbon_nanotube", "category": "chemical_plant",
             "time": 4,
             "ingredients": [["spiniform_stalagmite_crystal", 6]],
@@ -926,7 +932,7 @@
         {"key_name": "stone_ore", "category": "mineral"},
         {"key_name": "coal_ore", "category": "mineral"},
         {"key_name": "titanium_ore", "category": "mineral"},
-        {"key_name": "silicon_ore", "category": "mineral"},
+        {"key_name": "silicon_ore2", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
