@@ -69,12 +69,14 @@ export class BuildTarget {
         this.element = element.node()
 
         let dropdown = makeDropdown(element)
-        let itemSpan = dropdown.selectAll("div")
+        if (data(tiers) != -1) {
+            let itemSpan = dropdown.selectAll("div")
             .data(tiers)
             .join("div")
                 .selectAll("span")
                 .data(d => d)
                 .join("span")
+        }
         let itemLabel = addInputs(
             itemSpan,
             `target-${targetCount}`,
