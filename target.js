@@ -69,7 +69,7 @@ export class BuildTarget {
         this.element = element.node()
 
         let dropdown = makeDropdown(element)
-        if (data(tiers) != -1) {
+        if (tiers != -1) {
             let itemSpan = dropdown.selectAll("div")
             .data(tiers)
             .join("div")
