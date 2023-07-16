@@ -72,7 +72,7 @@
         {"name": "Proliferator Mk.III", "key_name": "proliferator_mk_iii", "tier": 1, "stack_size": 200},
         {"name": "Sorter MK.I", "key_name": "sorter_mk_i", "tier": 1, "stack_size": 200},
         {"name": "Mining machine", "key_name": "mining_machine", "tier": 1, "stack_size": 50},
-        {"name": "Refined oil", "key_name": "refined_oil_alt", "tier": undefined, "stack_size": 20},
+        {"name": "Refined oil", "key_name": "refined_oil_alt", "tier": -1, "stack_size": 20},
  
         {"name": "Crystal silicon", "key_name": "crystal_silicon", "tier": 2, "stack_size": 100},
         {"name": "Titanium alloy", "key_name": "titanium_alloy", "tier": 2, "stack_size": 100},
