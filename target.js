@@ -68,57 +68,53 @@ export class BuildTarget {
             .on("click", removeHandler(this))
         this.element = element.node()
 
-        
-        if (tiers != -1) {
-            let dropdown = makeDropdown(element)
-            let itemSpan = dropdown.selectAll("div")
+        let dropdown = makeDropdown(element)
+        let itemSpan = dropdown.selectAll("div")
             .data(tiers)
             .join("div")
                 .selectAll("span")
                 .data(d => d)
                 .join("span")
-            let itemLabel = addInputs(
+        let itemLabel = addInputs(
             itemSpan,
             `target-${targetCount}`,
             d => d === item,
             itemHandler(this),
         )
 
-            itemLabel.append("img")
-                .classed("icon", true)
-                .attr("src", d => d.iconPath())
-                //.attr("width", 32)
-                //.attr("height", 32)
-                .attr("title", d => d.name)
+        itemLabel.append("img")
+            .classed("icon", true)
+            .attr("src", d => d.iconPath())
+            //.attr("width", 32)
+            //.attr("height", 32)
+            .attr("title", d => d.name)
 
-            targetCount++
+        targetCount++
 
-            this.buildingLabel = element.append("label")
-                .classed(SELECTED_INPUT, true)
-                .text(" Buildings: ")
-                .node()
+        this.buildingLabel = element.append("label")
+            .classed(SELECTED_INPUT, true)
+            .text(" Buildings: ")
+            .node()
 
-            this.buildingInput = element.append("input")
-                .on("change", changeBuildingCountHandler(this))
-                .attr("type", "text")
-                .attr("value", 1)
-                .attr("size", 3)
-                .attr("title", "Enter a value to specify the number of buildings. The rate will be determined based on the number of items a single building can make.")
-                .node()
+        this.buildingInput = element.append("input")
+            .on("change", changeBuildingCountHandler(this))
+            .attr("type", "text")
+            .attr("value", 1)
+            .attr("size", 3)
+            .attr("title", "Enter a value to specify the number of buildings. The rate will be determined based on the number of items a single building can make.")
+            .node()
 
-            this.rateLabel = element.append("label")
-                .node()
-            this.setRateLabel()
+        this.rateLabel = element.append("label")
+            .node()
+        this.setRateLabel()
 
-            this.rateInput = element.append("input")
-                .on("change", changeRateHandler(this))
-                .attr("type", "text")
-                .attr("value", "")
-                .attr("size", 5)
-                .attr("title", "Enter a value to specify the rate. The number of buildings will be determined based on the rate.")
-                .node()
-        }
-        
+        this.rateInput = element.append("input")
+            .on("change", changeRateHandler(this))
+            .attr("type", "text")
+            .attr("value", "")
+            .attr("size", 5)
+            .attr("title", "Enter a value to specify the rate. The number of buildings will be determined based on the rate.")
+            .node()
     }
     setRateLabel() {
         this.rateLabel.textContent = " Items/" + spec.format.longRate + ": "

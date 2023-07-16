@@ -79,7 +79,9 @@ class FactorySpecification {
                 tier = []
                 tierMap.set(item.tier, tier)
             }
-            tier.push(item)
+            if (tier != -1 ) {
+                tier.push(item)
+            }
         }
         this.itemTiers = []
         for (let [tier, tierItems] of tierMap) {
