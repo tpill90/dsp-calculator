@@ -31,12 +31,14 @@
         {"name": "Water pump", "key_name": "water_pump", "category": "water", "base_rate": 60, "power": 300}
     ],
     "items": [
+        {"name": "Refined oil", "key_name": "refined_oil_alt", "tier": -1, "stack_size": 20},
+        {"name": "Silicon ore alt", "key_name": "silicon_ore_alt", "tier": -1, "stack_size": 100},
+
         {"name": "Iron ore", "key_name": "iron_ore", "tier": 0, "stack_size": 100},
         {"name": "Copper ore", "key_name": "copper_ore", "tier": 0, "stack_size": 100},
         {"name": "Stone ore", "key_name": "stone_ore", "tier": 0, "stack_size": 100},
         {"name": "Coal ore", "key_name": "coal_ore", "tier": 0, "stack_size": 100},
         {"name": "Silicon ore", "key_name": "silicon_ore", "tier": 0, "stack_size": 100},
-        {"name": "Silicon ore alt", "key_name": "silicon_ore_vein", "tier": 0, "stack_size": 100},
         {"name": "Titanium ore", "key_name": "titanium_ore", "tier": 0, "stack_size": 100},
         {"name": "Water", "key_name": "water", "tier": 0, "stack_size": 20},
         {"name": "Crude oil", "key_name": "crude_oil", "tier": 0, "stack_size": 20},
@@ -72,8 +74,7 @@
         {"name": "Proliferator Mk.III", "key_name": "proliferator_mk_iii", "tier": 1, "stack_size": 200},
         {"name": "Sorter MK.I", "key_name": "sorter_mk_i", "tier": 1, "stack_size": 200},
         {"name": "Mining machine", "key_name": "mining_machine", "tier": 1, "stack_size": 50},
-        {"name": "Refined oil", "key_name": "refined_oil_alt", "tier": -1, "stack_size": 20},
- 
+
         {"name": "Crystal silicon", "key_name": "crystal_silicon", "tier": 2, "stack_size": 100},
         {"name": "Titanium alloy", "key_name": "titanium_alloy", "tier": 2, "stack_size": 100},
         {"name": "Plastic", "key_name": "plastic", "tier": 2, "stack_size": 100},
@@ -569,7 +570,7 @@
         {
             "name": "High-purity silicon", "key_name": "high-purity_silicon_alt", "category": "smelting",
             "time": 2,
-            "ingredients": [["silicon_ore_vein", 2]],
+            "ingredients": [["silicon_ore_alt", 2]],
             "product": ["high-purity_silicon", 1]
         },
         {
@@ -945,7 +946,7 @@
         {"key_name": "stone_ore", "category": "mineral"},
         {"key_name": "coal_ore", "category": "mineral"},
         {"key_name": "titanium_ore", "category": "mineral"},
-        {"key_name": "silicon_ore_vein", "category": "mineral"},
+        {"key_name": "silicon_ore_alt", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
