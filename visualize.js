@@ -21,7 +21,7 @@ const iconSize = 48
 const nodePadding = 20
 
 const columnWidth = 150
-const maxNodeHeight = 175
+const maxNodeHeight = 275
 
 function makeGraph(totals, targets, ignore) {
     let outputs = []
