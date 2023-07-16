@@ -79,13 +79,11 @@ class FactorySpecification {
                 tier = []
                 tierMap.set(item.tier, tier)
             }
-            if (tier != -1 ) {
-                tier.push(item)
-            }
+            tier.push(item)
         }
         this.itemTiers = []
         for (let [tier, tierItems] of tierMap) {
-            this.itemTiers.push(tierItems)
+            if (tier != -1) this.itemTiers.push(tierItems)
         }
         this.itemTiers.sort((a, b) => a[0].tier - b[0].tier)
         this.recipes = recipes
