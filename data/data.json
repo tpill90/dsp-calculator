@@ -278,6 +278,12 @@
             "product": ["refined_oil", 3]
         },
         {
+            "name": "Refined oil alt", "key_name": "refined_oil_alt", "category": "oil_refinery",
+            "time": 4,
+            "ingredients": [["crude_oil", 2]],
+            "product": ["refined_oil", 2]
+        },
+        {
             "name": "Energetic graphite", "key_name": "energetic_graphite", "category": "smelting",
             "time": 2,
             "ingredients": [["coal_ore", 2]],
