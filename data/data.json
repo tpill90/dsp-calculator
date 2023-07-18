@@ -347,6 +347,12 @@
             "product": ["titanium_crystal", 1]
         },
         {
+            "name": "Titanium crystal", "key_name": "titanium_crystal_alt", "category": "crafting",
+            "time": 4,
+            "ingredients": [["organic_crystal_alt", 1], ["titanium_ingot", 3]],
+            "product": ["titanium_crystal", 1]
+        },
+        {
             "name": "Structure matrix", "key_name": "structure_matrix", "category": "matrix_lab",
             "time": 8,
             "ingredients": [["diamond", 1], ["titanium_crystal", 1]],
@@ -948,7 +954,7 @@
         {"key_name": "coal_ore", "category": "mineral"},
         {"key_name": "titanium_ore", "category": "mineral"},
         {"key_name": "silicon_ore_alt", "category": "mineral"},
-        {"key_name": "organic_crystal", "category": "mineral"},
+        {"key_name": "organic_crystal_alt", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
