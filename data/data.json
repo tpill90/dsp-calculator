@@ -32,8 +32,8 @@
     ],
     "items": [
         {"name": "Refined oil", "key_name": "refined_oil_alt", "tier": -1, "stack_size": 20},
-        {"name": "Silicon ore alt", "key_name": "silicon_ore_alt", "tier": -1, "stack_size": 100},
-        {"name": "Organic crystal alt", "key_name": "organic_crystal_alt", "tier": -1, "stack_size": 100},
+        {"name": "Silicon ore vein", "key_name": "silicon_ore_vein", "tier": -1, "stack_size": 100},
+        {"name": "Organic crystal vein", "key_name": "organic_crystal_vein", "tier": -1, "stack_size": 100},
 
         {"name": "Iron ore", "key_name": "iron_ore", "tier": 0, "stack_size": 100},
         {"name": "Copper ore", "key_name": "copper_ore", "tier": 0, "stack_size": 100},
@@ -349,7 +349,7 @@
         {
             "name": "Titanium crystal", "key_name": "titanium_crystal_alt", "category": "crafting",
             "time": 4,
-            "ingredients": [["organic_crystal_alt", 1], ["titanium_ingot", 3]],
+            "ingredients": [["organic_crystal_vein", 1], ["titanium_ingot", 3]],
             "product": ["titanium_crystal", 1]
         },
         {
@@ -577,7 +577,7 @@
         {
             "name": "High-purity silicon", "key_name": "high-purity_silicon_alt", "category": "smelting",
             "time": 2,
-            "ingredients": [["silicon_ore_alt", 2]],
+            "ingredients": [["silicon_ore_vein", 2]],
             "product": ["high-purity_silicon", 1]
         },
         {
@@ -953,8 +953,8 @@
         {"key_name": "stone_ore", "category": "mineral"},
         {"key_name": "coal_ore", "category": "mineral"},
         {"key_name": "titanium_ore", "category": "mineral"},
-        {"key_name": "silicon_ore_alt", "category": "mineral"},
-        {"key_name": "organic_crystal_alt", "category": "mineral"},
+        {"key_name": "silicon_ore_vein", "category": "mineral"},
+        {"key_name": "organic_crystal_vein", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
