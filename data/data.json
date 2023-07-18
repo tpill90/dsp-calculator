@@ -365,7 +365,7 @@
             "product": ["casimir_crystal", 1]
         },
         {
-            "name": "Casimir crystal", "key_name": "casimir_crystal", "category": "crafting",
+            "name": "Casimir crystal advanced", "key_name": "casimir_crystal", "category": "crafting",
             "time": 4,
             "ingredients": [["optical_grating_crystal", 8], ["graphene", 2], ["hydrogen", 12]],
             "product": ["casimir_crystal", 1]
