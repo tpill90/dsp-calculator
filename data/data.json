@@ -955,6 +955,7 @@
         {"key_name": "titanium_ore", "category": "mineral"},
         {"key_name": "silicon_ore_vein", "category": "mineral"},
         {"key_name": "organic_crystal_vein", "category": "mineral"},
+        {"key_name": "optical_grating_crystal", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
