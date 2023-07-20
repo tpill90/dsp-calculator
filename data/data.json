@@ -956,6 +956,11 @@
         {"key_name": "silicon_ore_vein", "category": "mineral"},
         {"key_name": "organic_crystal_vein", "category": "mineral"},
         {"key_name": "optical_grating_crystal", "category": "mineral"},
+        {"key_name": "fractal_silicon", "category": "mineral"},
+        {"key_name": "unipolar_magnet", "category": "mineral"},
+        {"key_name": "spiniform_stalagmite_crystal", "category": "mineral"},
+        {"key_name": "fire_ice", "category": "mineral"},
+        {"key_name": "kimberlite_ore", "category": "mineral"},
         {"key_name": "crude_oil", "category": "oil"},
         {"key_name": "water", "category": "water"}
     ]
