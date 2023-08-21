@@ -17,6 +17,7 @@
     /* slightly brighter than main foreground color */
     --bright: #f1fff2;
 }
+
 /* top-level/shared elements */
 body {
     font-family: sans-serif;
@@ -67,6 +68,7 @@ img.icon {
 .hide-building, .hide-power-shard {
     visibility: hidden;
 }
+
 /* build targets */
 .targetButton {
     height: 2em;
@@ -89,6 +91,7 @@ label.selected {
     font-weight: bold;
     color: var(--bright);
 }
+
 /* settings */
 table#settings {
     border-collapse: collapse;
@@ -226,10 +229,12 @@ table.resource input[type="radio"]:checked + label {
 #alt_recipe_settings .open .arrow {
     font-size: 32px;
 }
+
 /* tabs */
 div.tabs {
     overflow: hidden;
 }
+
 div.tabs button.tab_button {
     color: var(--accent);
     background-color: inherit;
@@ -248,9 +253,14 @@ div.tabs button.active, div.tabs button.active:hover {
     color: var(--bright);
     background-color: var(--main);
 }
+
 div.tab {
     display: none;
-    padding: 1em;
+    width: fit-content;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
     background-color: var(--main);
 }
 /* visualizer */
@@ -269,10 +279,12 @@ text {
     fill: var(--foreground);
     font: 12px sans-serif;
 }
+
 /* items tab */
 #totals {
     border-collapse: collapse;
 }
+
 tr.display-row td.pad, th.pad {
     padding-left: 1em;
 }
@@ -286,6 +298,7 @@ input.overclock {
 tr.nobuilding td.building {
     display: none;
 }
+
 /* about */
 .about-content {
     max-width: 40em;
