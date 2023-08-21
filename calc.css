@@ -294,9 +294,6 @@ tr.display-row td {
     padding-bottom: 8px;
 }
 
-input.overclock {
-    width: 4em;
-}
 tr.nobuilding td.building {
     display: none;
 }

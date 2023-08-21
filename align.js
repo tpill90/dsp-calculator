@@ -57,7 +57,7 @@ export class Formatter
         }
         while (toAdd > 0)
         {
-            s += "\u00A0";
+            // s += "\u00A0";
             toAdd--;
         }
         return s;
