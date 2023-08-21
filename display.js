@@ -1,35 +1,27 @@
-/*Copyright 2019 Kirk McDonald
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.*/
 import { toggleIgnoreHandler } from "./events.js"
 import { spec } from "./factory.js"
 import { Rational, zero, one } from "./rational.js"
 
-class Header {
-    constructor(text, colspan) {
+class Header
+{
+    constructor(text, colspan)
+    {
         this.text = text
         this.colspan = colspan
     }
 }
 
-function changeOverclock(d) {
+function changeOverclock(d)
+{
     let hundred = Rational.from_float(100)
     let twoFifty = Rational.from_float(250)
     let x = Rational.from_string(this.value).floor()
-    if (x.less(one)) {
+    if (x.less(one))
+    {
         x = one
     }
-    if (twoFifty.less(x)) {
+    if (twoFifty.less(x))
+    {
         x = twoFifty
     }
     x = x.div(hundred)
@@ -41,15 +33,18 @@ function changeOverclock(d) {
 // elements.
 let displayedItems = []
 
-export function displayItems(spec, totals, ignore) {
+export function displayItems(spec, totals, ignore)
+{
     displayedItems = displayedItems.slice(0, totals.topo.length)
-    while (displayedItems.length < totals.topo.length) {
+    while (displayedItems.length < totals.topo.length)
+    {
         displayedItems.push({})
     }
     let totalAveragePower = zero
     let totalPeakPower = zero
     let powerShardsUsed = 0
-    for (let i = 0; i < totals.topo.length; i++) {
+    for (let i = 0; i < totals.topo.length; i++)
+    {
         let recipe = totals.topo[i]
         let display = displayedItems[i]
         let rate = totals.rates.get(recipe)
@@ -57,7 +52,7 @@ export function displayItems(spec, totals, ignore) {
         let itemRate = rate.mul(recipe.gives(item))
         let overclock = spec.getOverclock(recipe)
         let overclockString = overclock.mul(Rational.from_float(100)).toString()
-        let {average, peak} = spec.getPowerUsage(recipe, rate, totals.topo.length)
+        let { average, peak } = spec.getPowerUsage(recipe, rate, totals.topo.length)
         totalAveragePower = totalAveragePower.add(average)
         totalPeakPower = totalPeakPower.add(peak)
         display.item = item
@@ -83,7 +78,8 @@ export function displayItems(spec, totals, ignore) {
         new Header("power", 1),
     ]
     let totalCols = 0
-    for (let header of headers) {
+    for (let header of headers)
+    {
         totalCols += header.colspan
     }
 
@@ -102,18 +98,18 @@ export function displayItems(spec, totals, ignore) {
     rows.exit().remove()
     let row = rows.enter()
         .append("tr")
-            .classed("display-row", true)
+        .classed("display-row", true)
     // items/m
     row.append("td")
         .append("img")
-            .classed("icon item-icon", true)
-            .attr("width", 32)
-            .attr("height", 32)
-            .on("click", toggleIgnoreHandler)
+        .classed("icon item-icon", true)
+        .attr("width", 32)
+        .attr("height", 32)
+        .on("click", toggleIgnoreHandler)
     row.append("td")
         .classed("right-align", true)
         .append("tt")
-            .classed("item-rate", true)
+        .classed("item-rate", true)
     // belts
     let beltCell = row.append("td")
         .classed("pad", true)
@@ -125,7 +121,7 @@ export function displayItems(spec, totals, ignore) {
     row.append("td")
         .classed("right-align", true)
         .append("tt")
-            .classed("belt-count", true)
+        .classed("belt-count", true)
     // buildings
     let buildingCell = row.append("td")
         .classed("pad building", true)
@@ -137,7 +133,7 @@ export function displayItems(spec, totals, ignore) {
     row.append("td")
         .classed("right-align building", true)
         .append("tt")
-            .classed("building-count", true)
+        .classed("building-count", true)
     /*
     row.filter(d => d.building === null)
         .append("td")
@@ -159,7 +155,7 @@ export function displayItems(spec, totals, ignore) {
     row.append("td")
         .classed("right-align pad building", true)
         .append("tt")
-            .classed("power", true)
+        .classed("power", true)
 
     // update rows
     row = table.select("tbody").selectAll("tr")
@@ -185,10 +181,12 @@ export function displayItems(spec, totals, ignore) {
         .attr("value", d => d.overclock)
 
     // If power shards are used at all...
-    if (powerShardsUsed) {
+    if (powerShardsUsed)
+    {
 
         // ...if the table's power shard column is "collapsed"...
-        if (table.classed("power-shard-collapsed")) {
+        if (table.classed("power-shard-collapsed"))
+        {
             let powerShard = spec.items.get("power-shard")
 
             // ...insert a power shard cell after each overclock cell:
@@ -205,7 +203,7 @@ export function displayItems(spec, totals, ignore) {
             buildingRow.insert("td", "td.power-shard-icon + *")
                 .classed("right-align building power-shard", true)
                 .append("tt")
-                    .classed("power-shard-count", true)
+                .classed("power-shard-count", true)
 
             // ...mark the table's power shard column "uncollapsed":
             table.classed("power-shard-collapsed", false)
@@ -216,10 +214,11 @@ export function displayItems(spec, totals, ignore) {
         buildingRow.selectAll("tt.power-shard-count").text(d => d.powerShardCount)
         buildingRow.selectAll(".power-shard").classed("hide-power-shard", d => d.powerShardCount == 0)
     }
-    
+
     // Otherwise, remove all power shard cells, and mark the table's power
     // shard column "collapsed":
-    else {
+    else
+    {
         buildingRow.selectAll(".power-shard").remove()
         table.classed("power-shard-collapsed", true)
     }
