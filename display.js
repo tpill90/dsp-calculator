@@ -88,7 +88,7 @@ export function displayItems(spec, totals, ignore)
 function BuildTableHtml(spec, powerShardsUsed, totalAveragePower, totalPeakPower)
 {
     let headers = [
-        new Header("items/" + spec.format.rateName, 2),
+        new Header("items/" + spec.format.rateName, 1),
         new Header("buildings", 2),
         new Header("overclock", powerShardsUsed ? 3 : 1),
         new Header("power", 1),
@@ -119,21 +119,22 @@ function BuildTableHtml(spec, powerShardsUsed, totalAveragePower, totalPeakPower
         .classed("display-row", true);
 
     // items/m
-    row.append("td")
-        .append("img")
-        .classed("icon item-icon", true)
-        .attr("width", 32)
-        .attr("height", 32)
-        .on("click", toggleIgnoreHandler);
-        
-    row.append("td")
-        .classed("right-align", true)
-        .append("tt")
-        .classed("item-rate", true);
+    let itemCell = row.append("td");
+
+    itemCell.append("img")
+            .classed("icon item-icon", true)
+            .attr("width", 32)
+            .attr("height", 32)
+            .on("click", toggleIgnoreHandler);
+            
+    itemCell.append("tt")
+            .classed("item-rate", true);
 
     // buildings
     let buildingCell = row.append("td")
         .classed("pad building", true);
+
+
     buildingCell.append("img")
         .classed("icon building-icon", true)
         .attr("width", 32)
@@ -166,21 +167,16 @@ function BuildTableHtml(spec, powerShardsUsed, totalAveragePower, totalPeakPower
     row = table.select("tbody")
                .selectAll("tr")
                .classed("nobuilding", d => d.building === null);
+
+    // Writing item values 
     row.selectAll("img.item-icon")
         .classed("ignore", d => d.ignore)
         .attr("src", d => d.item.iconPath())
-        .attr("title", d => d.item.name);
+        .attr("title", "Click to ignore");
 
-    // Writing item rate value
     row.selectAll("tt.item-rate")
-        .text(d => spec.format.alignRate(d.itemRate));
+       .text(d => spec.format.alignRate(d.itemRate));
         
-    row.selectAll("img.belt-icon")
-        .attr("src", spec.belt.iconPath())
-        .attr("title", spec.belt.name);
-    row.selectAll("tt.belt-count")
-        .text(d => spec.format.alignCount(spec.getBeltCount(d.itemRate)));
-
     let buildingRow = row.filter(d => d.building !== null);
     buildingRow.selectAll("img.building-icon")
         .attr("src", d => d.building.iconPath())

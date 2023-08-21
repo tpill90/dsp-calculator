@@ -288,10 +288,12 @@ text {
 tr.display-row td.pad, th.pad {
     padding-left: 1em;
 }
+
 tr.display-row td {
     padding-top: 8px;
     padding-bottom: 8px;
 }
+
 input.overclock {
     width: 4em;
 }
@@ -299,7 +301,7 @@ tr.nobuilding td.building {
     display: none;
 }
 
-/* about */
-.about-content {
-    max-width: 40em;
+tt {
+    padding-left: 16px;
+    text-align: right;
 }
