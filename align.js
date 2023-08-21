@@ -1,16 +1,3 @@
-/*Copyright 2019 Kirk McDonald
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.*/
 import { Rational, one } from "./rational.js";
 
 export const DEFAULT_RATE = "m";
@@ -49,19 +36,22 @@ export class Formatter
         this.longRate = longRateNames.get(rate);
         this.rateFactor = displayRates.get(rate);
     }
-    align(s, prec)
+
+    align(s, precision)
     {
         if (this.displayFormat === "rational")
         {
             return s;
         }
+
         let idx = s.indexOf(".");
         if (idx === -1)
         {
             idx = s.length;
         }
-        let toAdd = prec - s.length + idx;
-        if (prec > 0)
+
+        let toAdd = precision - s.length + idx;
+        if (precision > 0)
         {
             toAdd += 1;
         }
@@ -72,6 +62,7 @@ export class Formatter
         }
         return s;
     }
+
     rate(rate)
     {
         rate = rate.mul(this.rateFactor);
@@ -86,7 +77,14 @@ export class Formatter
 
     alignRate(rate) 
     {
-        return this.align(this.rate(rate), this.ratePrecision);
+        let aligned = this.align(this.rate(rate), this.ratePrecision);
+        return this.addCommasToNumber(aligned);
+    }
+
+    alignCount(count)
+    {
+        let aligned = this.align(this.count(count), this.countPrecision);
+        return this.addCommasToNumber(aligned);
     }
 
     count(count)
@@ -99,8 +97,20 @@ export class Formatter
             return count.toUpDecimal(this.countPrecision);
         }
     }
-    alignCount(count)
+       
+
+    addCommasToNumber(number) 
     {
-        return this.align(this.count(count), this.countPrecision);
+        // Convert the number to a string
+        var numberString = number.toString();
+        
+        // Split the string into integer and decimal parts (if any)
+        var parts = numberString.split(".");
+        
+        // Add commas to the integer part
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        
+        // Join the integer and decimal parts (if any) and return
+        return parts.join(".");
     }
 }

@@ -89,7 +89,6 @@ function BuildTableHtml(spec, powerShardsUsed, totalAveragePower, totalPeakPower
 {
     let headers = [
         new Header("items/" + spec.format.rateName, 2),
-        new Header("belts", 2),
         new Header("buildings", 2),
         new Header("overclock", powerShardsUsed ? 3 : 1),
         new Header("power", 1),
@@ -102,16 +101,18 @@ function BuildTableHtml(spec, powerShardsUsed, totalAveragePower, totalPeakPower
 
     let table = d3.select("table#totals");
 
-    let headerRow = table.selectAll("thead tr").selectAll("th")
-        .data(headers);
+    let headerRow = table.selectAll("thead tr")
+                         .selectAll("th")
+                         .data(headers);
     headerRow.exit().remove();
     headerRow.join("th")
         .text(d => d.text)
         .attr("colspan", d => d.colspan);
 
     // create missing rows
-    let rows = table.selectAll("tbody").selectAll("tr")
-        .data(displayedItems);
+    let rows = table.selectAll("tbody")
+                    .selectAll("tr")
+                    .data(displayedItems);
     rows.exit().remove();
     let row = rows.enter()
         .append("tr")
@@ -124,24 +125,12 @@ function BuildTableHtml(spec, powerShardsUsed, totalAveragePower, totalPeakPower
         .attr("width", 32)
         .attr("height", 32)
         .on("click", toggleIgnoreHandler);
+        
     row.append("td")
         .classed("right-align", true)
         .append("tt")
         .classed("item-rate", true);
 
-    // belts
-    let beltCell = row.append("td")
-                      .classed("pad", true);
-    beltCell.append("img")
-            .classed("icon belt-icon", true)
-            .attr("width", 32)
-            .attr("height", 32);
-    beltCell.append(d => new Text(" \u00d7"));
-    row.append("td")
-       .classed("right-align", true)
-       .append("tt")
-       .classed("belt-count", true);
-        
     // buildings
     let buildingCell = row.append("td")
         .classed("pad building", true);
@@ -174,14 +163,18 @@ function BuildTableHtml(spec, powerShardsUsed, totalAveragePower, totalPeakPower
         .classed("power", true);
 
     // update rows
-    row = table.select("tbody").selectAll("tr")
-        .classed("nobuilding", d => d.building === null);
+    row = table.select("tbody")
+               .selectAll("tr")
+               .classed("nobuilding", d => d.building === null);
     row.selectAll("img.item-icon")
         .classed("ignore", d => d.ignore)
         .attr("src", d => d.item.iconPath())
         .attr("title", d => d.item.name);
+
+    // Writing item rate value
     row.selectAll("tt.item-rate")
         .text(d => spec.format.alignRate(d.itemRate));
+        
     row.selectAll("img.belt-icon")
         .attr("src", spec.belt.iconPath())
         .attr("title", spec.belt.name);
