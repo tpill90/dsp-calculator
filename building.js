@@ -1,3 +1,4 @@
+//@ts-check
 import { Rational } from "./rational.js";
 
 class Building
@@ -19,8 +20,7 @@ class Building
 
     getRecipeRate(spec, recipe)
     {
-        let overclock = spec.getOverclock(recipe);
-        return recipe.time.reciprocate().mul(overclock).mul(this.rate);
+        return recipe.time.reciprocate().mul(this.rate);
     }
 
     iconPath()
@@ -40,8 +40,7 @@ class Miner extends Building
     getRecipeRate(spec, recipe)
     {
         let purity = spec.getResourcePurity(recipe);
-        let overclock = spec.getOverclock(recipe);
-        return this.baseRate.mul(purity.factor).mul(overclock);
+        return this.baseRate.mul(purity.factor);
     }
 }
 

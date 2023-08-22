@@ -142,12 +142,6 @@ function getMachineCountString(d)
     return `\u00d7 ${spec.format.count(d.count)}`;
 }
 
-function getOverclockString(d)
-{
-    console.assert(!d.count.isZero(), "Items that aren't produced through machines (machine count == 0) can't have an overclock value!");
-    return `${spec.getOverclock(d.recipe).mul(Rational.from_float(100)).toString()}%`;
-}
-
 // This is basically an educated guess, but seems to match whatever Chrome and
 // Firefox do pretty well.
 function beltPath(d)
@@ -215,10 +209,10 @@ export function renderTotals(totals, targets, ignore)
         if (node.count.isZero())
         {
             text = text.text(getRateString(node));
-        } else
+        } 
+        else
         {
             text.append("tspan").attr("x", 0).text(getMachineCountString(node));
-            text.append("tspan").attr("x", 0).text(getOverclockString(node));
         }
         let textWidth = text.node().getBBox().width;
         text.remove();
@@ -291,8 +285,7 @@ export function renderTotals(totals, targets, ignore)
         .attr("text-anchor", "start")
         .text(getRateString);
 
-    // For nodes with an associated machine, display the machine count on one
-    // line, and the overclock rate on the next line:
+    // For nodes with an associated machine, display the machine count on one line
     let twoLineText = rects.filter(d => !d.count.isZero())
         .append("text")
         .attr("x", d => d.x0 + iconSize + 2)
@@ -303,8 +296,7 @@ export function renderTotals(totals, targets, ignore)
         .text(getMachineCountString);
     twoLineText.append("tspan") // ("x" and "dy" are used to render the text on the next line)
         .attr("x", d => d.x0 + iconSize + 2)
-        .attr("dy", "1em")
-        .text(getOverclockString);
+        .attr("dy", "1em");
 
     // Link paths
     let link = svg.append("g")
@@ -373,6 +365,6 @@ export function renderTotals(totals, targets, ignore)
         .attr("height", d => d.rect.height)
         .on("click", toggleIgnoreHandler)
         .append("title")
-        .text(d => d.node.name + (d.node.count.isZero() ? "" : `\n${d.node.building.name} ${getMachineCountString(d.node)}\n${getOverclockString(d.node)}`));
+        .text(d => d.node.name + (d.node.count.isZero() ? "" : `\n${d.node.building.name} ${getMachineCountString(d.node)}\n`));
 }
 

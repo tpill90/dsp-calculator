@@ -154,6 +154,7 @@ export class Rational
             this.q.times(other.q)
         );
     }
+
     mul(other)
     {
         return new Rational(
@@ -161,6 +162,7 @@ export class Rational
             this.q.times(other.q)
         );
     }
+    
     div(other)
     {
         return new Rational(

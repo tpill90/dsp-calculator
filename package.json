@@ -1,0 +1,14 @@
+{
+  "name": "dsp-calculator",
+  "version": "1.0.0",
+  "description": "Dyson Sphere Program Calculator",
+  "main": "align.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.47.0"
+  }
+}

@@ -42,9 +42,6 @@ class FactorySpecification
         this.miners = new Map();
         this.minerSettings = new Map();
 
-        // Map recipe to overclock factor
-        this.overclock = new Map();
-
         // Map item to recipe
         this.altRecipes = new Map();
 
@@ -102,7 +99,6 @@ class FactorySpecification
         this.assembler = assemblers.get(DEFAULT_ASSEMBLER);
         this.smelter = smelters.get(DEFAULT_SMELTER);
         this.initMinerSettings();
-        // this.initOverclockSettings()
     }
 
     initMinerSettings()
@@ -166,10 +162,12 @@ class FactorySpecification
         if (recipe.category === null)
         {
             return null;
-        } else if (this.minerSettings.has(recipe))
+        }
+        else if (this.minerSettings.has(recipe))
         {
             return this.minerSettings.get(recipe).miner;
-        } else if (recipe.category === "crafting")
+        }
+        else if (recipe.category === "crafting")
         {
             return this.checkBuilding("crafting", this.assembler.key, recipe);
         } else if (recipe.category === "smelting")
@@ -178,33 +176,6 @@ class FactorySpecification
         } else
         {
             return this.buildings.get(recipe.category)[0];
-        }
-    }
-
-
-
-
-
-    getOverclock(recipe)
-    {
-        let oc = this.overclock.get(recipe);
-        if (oc)
-        {
-            return oc;
-        } else
-        {
-            return one;
-        }
-    }
-
-    setOverclock(recipe, overclock)
-    {
-        if (overclock.equal(one))
-        {
-            this.overclock.delete(recipe);
-        } else
-        {
-            this.overclock.set(recipe, overclock);
         }
     }
 
@@ -255,18 +226,6 @@ class FactorySpecification
         let count = this.getCount(recipe, rate);
         let average = building.power.mul(count);
         let peak = building.power.mul(count.ceil());
-        let overclock = this.overclock.get(recipe);
-        if (overclock !== undefined)
-        {
-            // The result of this exponent will typically be irrational, so
-            // this approximation is a necessity. Because overclock is limited
-            // to the range [0.01, 2.50], any imprecision introduced by this
-            // approximation is minimal (and is probably less than is present
-            // in the game itself).
-            let overclockFactor = Rational.from_float(Math.pow(overclock.toFloat(), 1.6));
-            average = average.mul(overclockFactor);
-            peak = peak.mul(overclockFactor);
-        }
         return { average, peak };
     }
 
