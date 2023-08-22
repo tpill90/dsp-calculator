@@ -2,7 +2,6 @@ import {DEFAULT_RATE, DEFAULT_RATE_PRECISION, DEFAULT_COUNT_PRECISION, longRateN
 import {dropdown} from "./dropdown.js"
 import {DEFAULT_TAB, clickTab} from "./events.js"
 import {spec, resourcePurities, DEFAULT_BELT, DEFAULT_ASSEMBLER, DEFAULT_SMELTER} from "./factory.js"
-import {Rational} from "./rational.js"
 
 // There are several things going on with this control flow. Settings should
 // work like this:
