@@ -8,8 +8,6 @@ import { renderTotals } from "./visualize.js";
 
 const DEFAULT_ITEM_KEY = "iron_ingot";
 
-let minerCategories = new Set(["mineral", "oil", "water"]);
-
 export let DEFAULT_BELT = "belt3";
 export let DEFAULT_ASSEMBLER = "assembler3";
 export let DEFAULT_SMELTER = "smelter2";
@@ -21,7 +19,7 @@ class FactorySpecification
         // Game data definitions
         this.items = null;
         this.recipes = null;
-        this.buildings = null;
+        this.buildings = new Map();
         this.belts = null;
         this.assemblers = null;
         this.smelters = null;
@@ -30,9 +28,6 @@ class FactorySpecification
 
         this.buildTargets = [];
 
-        // Map resource recipe to {miner, purity}
-        this.miners = new Map();
-        this.minerSettings = new Map();
 
         // Map item to recipe
         this.altRecipes = new Map();
@@ -48,7 +43,7 @@ class FactorySpecification
         this.format = new Formatter();
     }
 
-    setData(items, recipes, buildings, belts, assemblers, smelters)
+    setData(items, recipes, inputBuildings, belts, assemblers, smelters)
     {
         this.items = items;
         let tierMap = new Map();
@@ -69,8 +64,8 @@ class FactorySpecification
         }
         this.itemTiers.sort((a, b) => a[0].tier - b[0].tier);
         this.recipes = recipes;
-        this.buildings = new Map();
-        for (let building of buildings)
+
+        for (let building of inputBuildings)
         {
             let category = this.buildings.get(building.category);
             if (category === undefined)
@@ -80,8 +75,10 @@ class FactorySpecification
             }
             category.push(building);
         }
+
         this.belts = belts;
         this.belt = belts.get(DEFAULT_BELT);
+
         this.assemblers = assemblers;
         this.smelters = smelters;
         this.assembler = assemblers.get(DEFAULT_ASSEMBLER);
@@ -132,10 +129,6 @@ class FactorySpecification
         if (recipe.category === null)
         {
             return null;
-        }
-        else if (this.minerSettings.has(recipe))
-        {
-            return this.minerSettings.get(recipe).miner;
         }
         else if (recipe.category === "crafting")
         {

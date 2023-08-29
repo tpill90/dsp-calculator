@@ -303,8 +303,6 @@ function renderAltRecipes(settings) {
     renderIngredient(ingredientSpan)
 }
 
-// miners
-
 export function renderSettings(settings) {
     renderTargets(settings)
     renderIgnore(settings)
