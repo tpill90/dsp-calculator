@@ -305,12 +305,6 @@ function renderAltRecipes(settings) {
 
 // miners
 
-function mineHandler(d) {
-    spec.setMiner(d.recipe, d.miner, d.purity)
-    spec.updateSolution()
-}
-
-
 export function renderSettings(settings) {
     renderTargets(settings)
     renderIgnore(settings)

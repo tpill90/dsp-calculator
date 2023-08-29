@@ -79,10 +79,6 @@ class FactorySpecification
                 this.buildings.set(building.category, category);
             }
             category.push(building);
-            if (minerCategories.has(building.category))
-            {
-                this.miners.set(building.key, building);
-            }
         }
         this.belts = belts;
         this.belt = belts.get(DEFAULT_BELT);
@@ -90,22 +86,6 @@ class FactorySpecification
         this.smelters = smelters;
         this.assembler = assemblers.get(DEFAULT_ASSEMBLER);
         this.smelter = smelters.get(DEFAULT_SMELTER);
-        this.initMinerSettings();
-    }
-
-    initMinerSettings()
-    {
-        this.minerSettings = new Map();
-        for (let [recipeKey, recipe] of this.recipes)
-        {
-            if (minerCategories.has(recipe.category))
-            {
-                let miners = this.buildings.get(recipe.category);
-                // Default to miner mk1.
-                let miner = miners[0];
-                this.minerSettings.set(recipe, { miner });
-            }
-        }
     }
 
     getRecipe(item)
@@ -160,10 +140,12 @@ class FactorySpecification
         else if (recipe.category === "crafting")
         {
             return this.checkBuilding("crafting", this.assembler.key, recipe);
-        } else if (recipe.category === "smelting")
+        } 
+        else if (recipe.category === "smelting")
         {
             return this.checkBuilding("smelting", this.smelter.key, recipe);
-        } else
+        } 
+        else
         {
             return this.buildings.get(recipe.category)[0];
         }
@@ -179,16 +161,6 @@ class FactorySpecification
             return null;
         }
         return building.getRecipeRate(this, recipe);
-    }
-
-    getResourcePurity(recipe)
-    {
-        return this.minerSettings.get(recipe).purity;
-    }
-
-    setMiner(recipe, miner, purity)
-    {
-        this.minerSettings.set(recipe, { miner, purity });
     }
 
     getCount(recipe, rate)
