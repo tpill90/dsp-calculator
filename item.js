@@ -1,5 +1,4 @@
 import { Totals } from "./totals.js";
-import { Rational } from "./rational.js";
 
 export class Item
 {
@@ -45,7 +44,7 @@ export class Item
 
     iconPath()
     {
-        return "images/" + this.name + ".png";
+        return `images/${this.name}.png`;
     }
 }
 

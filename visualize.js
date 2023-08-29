@@ -8,7 +8,7 @@ const iconSize = 48;
 const nodePadding = 20;
 
 const columnWidth = 150;
-const maxNodeHeight = 350;
+const maxNodeHeight = 225;
 
 function makeGraph(totals, targets, ignore)
 {
@@ -194,6 +194,7 @@ export function renderTotals(totals, targets, ignore)
         }
         rankList.push(value);
     }
+    
     if (largestValue.isZero())
     {
         return;
@@ -224,9 +225,9 @@ export function renderTotals(totals, targets, ignore)
     testSVG.remove();
     let nodeWidth = iconSize + maxTextWidth + 4;
     let width = maxRank * (nodeWidth + columnWidth) + nodeWidth;
+
     // The height of the display is normalized by the height of the tallest box
-    // in the graph. We define it to be (approximately) maxNodeHeight pixels
-    // high.
+    // in the graph. We define it to be (approximately) maxNodeHeight pixels high.
     let valueFactor = Rational.from_float(maxNodeHeight).div(largestValue);
     let largestEstimate = 0;
     for (let [rank, rankList] of ranks)

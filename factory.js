@@ -1,7 +1,7 @@
 import { Formatter } from "./align.js";
 import { displayItems } from "./display.js";
 import { formatSettings } from "./fragment.js";
-import { Rational, zero, half, one } from "./rational.js";
+import { zero } from "./rational.js";
 import { BuildTarget } from "./target.js";
 import { Totals } from "./totals.js";
 import { renderTotals } from "./visualize.js";
@@ -9,14 +9,6 @@ import { renderTotals } from "./visualize.js";
 const DEFAULT_ITEM_KEY = "iron_ingot";
 
 let minerCategories = new Set(["mineral", "oil", "water"]);
-
-export let resourcePurities = [
-    { key: "0", name: "Impure", factor: half },
-    { key: "1", name: "Normal", factor: one },
-    { key: "2", name: "Pure", factor: Rational.from_float(2) },
-];
-
-export let DEFAULT_PURITY = resourcePurities[1];
 
 export let DEFAULT_BELT = "belt3";
 export let DEFAULT_ASSEMBLER = "assembler3";
@@ -111,9 +103,7 @@ class FactorySpecification
                 let miners = this.buildings.get(recipe.category);
                 // Default to miner mk1.
                 let miner = miners[0];
-                // Default to normal purity.
-                let purity = DEFAULT_PURITY;
-                this.minerSettings.set(recipe, { miner, purity });
+                this.minerSettings.set(recipe, { miner });
             }
         }
     }

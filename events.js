@@ -1,5 +1,4 @@
 import { spec } from "./factory.js";
-import { formatSettings } from "./fragment.js";
 
 // build target events
 

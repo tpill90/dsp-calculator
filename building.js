@@ -39,8 +39,7 @@ class Miner extends Building
 
     getRecipeRate(spec, recipe)
     {
-        let purity = spec.getResourcePurity(recipe);
-        return this.baseRate.mul(purity.factor);
+        return this.baseRate;
     }
 }
 
