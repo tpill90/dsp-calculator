@@ -1,4 +1,5 @@
 //@ts-check
+import FactoryData from "./models/FactoryData.js";
 import { Rational } from "./rational.js";
 
 class Building
@@ -43,6 +44,11 @@ class Miner extends Building
     }
 }
 
+/**
+ * 
+ * @param {FactoryData} data 
+ * @returns 
+ */
 export function getBuildings(data)
 {
     let buildings = [];
