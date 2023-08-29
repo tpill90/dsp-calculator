@@ -178,7 +178,7 @@ class FactorySpecification
         return rate.div(this.belt.rate);
     }
 
-    getPowerUsage(recipe, rate, itemCount)
+    getPowerUsage(recipe, rate)
     {
         let building = this.getBuilding(recipe);
         if (building === null || this.ignore.has(recipe))

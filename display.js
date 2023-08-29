@@ -32,8 +32,7 @@ export function displayItems(spec, totals, ignore)
         let display = displayedItems[i];
         let rate = totals.rates.get(recipe);
         
-        
-        let { average, peak } = spec.getPowerUsage(recipe, rate, totals.topo.length);
+        let { average, peak } = spec.getPowerUsage(recipe, rate);
         totalAveragePower = totalAveragePower.add(average);
         totalPeakPower = totalPeakPower.add(peak);
 

@@ -1,4 +1,5 @@
 //@ts-check
+// eslint-disable-next-line no-unused-vars
 import FactoryData from "./models/FactoryData.js";
 import { Rational } from "./rational.js";
 
@@ -26,7 +27,7 @@ class Building
 
     iconPath()
     {
-        return "images/" + this.name + ".png";
+        return `images/${this.name}.png`;
     }
 }
 
