@@ -1,6 +1,7 @@
 import { Formatter } from "./align.js";
 import { displayItems } from "./display.js";
 import { formatSettings } from "./fragment.js";
+import FactoryData from "./models/FactoryData.js";
 import { zero } from "./rational.js";
 import { BuildTarget } from "./target.js";
 import { Totals } from "./totals.js";
@@ -57,12 +58,14 @@ class FactorySpecification
             }
             tier.push(item);
         }
+
         this.itemTiers = [];
         for (let [tier, tierItems] of tierMap)
         {
             if (tier != -1) this.itemTiers.push(tierItems);
         }
         this.itemTiers.sort((a, b) => a[0].tier - b[0].tier);
+        
         this.recipes = recipes;
 
         for (let building of inputBuildings)
@@ -83,6 +86,8 @@ class FactorySpecification
         this.smelters = smelters;
         this.assembler = assemblers.get(DEFAULT_ASSEMBLER);
         this.smelter = smelters.get(DEFAULT_SMELTER);
+
+        debugger;
     }
 
     getRecipe(item)

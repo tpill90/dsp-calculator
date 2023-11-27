@@ -20,7 +20,7 @@ function loadData(settings)
         let belts = getBelts(data)
         let assemblers = getAssemblers(data)
         let smelters = getSmelters(data)
-        spec.setData(items, recipes, buildings, belts, assemblers, smelters)
+        spec.setData(items, recipes, buildings, belts, assemblers, smelters, factoryData2)
 
         renderSettings(settings)
 
